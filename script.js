@@ -1,3 +1,5 @@
+let currentFilter = 'all';
+
 document.addEventListener('DOMContentLoaded', () => {
     const taskInput = document.getElementById('taskInput');
     const addTaskBtn = document.getElementById('addTask');
@@ -49,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         tasks.push(task);
         saveTasks();
-        renderTasks();
+        renderTasks(currentFilter);
         taskInput.value = '';
     }
 
@@ -59,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (task) {
             task.status = !task.status;
             saveTasks();
-            renderTasks();
+            renderTasks(currentFilter);
         }
     }
 
@@ -67,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function deleteTask(id) {
         tasks = tasks.filter(task => task.id !== id);
         saveTasks();
-        renderTasks();
+        renderTasks(currentFilter);
     }
 
     // Función para guardar las tareas en localStorage
@@ -96,10 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            renderTasks(btn.dataset.filter);
+            currentFilter = btn.dataset.filter;
+            renderTasks(currentFilter);
         });
     });
 
     // Inicializar la aplicación
-    renderTasks();
+    renderTasks(currentFilter);
 });
