@@ -10,6 +10,35 @@ body {
     padding: 20px;
 }
 
+body.dark {
+    background-color: #121212;
+    color: #eee;
+}
+
+.dark .container {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.theme-toggle {
+    margin-bottom: 10px;
+}
+
+.dark button {
+    background-color: #333;
+}
+
+.dark button:hover {
+    background-color: #444;
+}
+
+.edit-input {
+    flex: 1;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
 .container {
     max-width: 600px;
     margin: 0 auto;
